@@ -6,10 +6,10 @@ This contains a few notes about programming. That I find useful. Hopefully it he
  ### [Patterns in a nutshell](/PatternsInNutshell.md) ###
  
  ## Data structures
- ### BSTs ###
- ### AVL ###
+ ### BSTs - coming soon ###
+ ### AVL - coming soon ###
  
  
  ## Algorithims ##
- ### Sequential search ###
- ### Breatch seacrch ###
+ ### Sequential search - coming soon ###
+ ### Breatch seacrch - coming soon ###
