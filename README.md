@@ -17,7 +17,7 @@ This contains a few notes about programming. That I find useful. Hopefully it he
  1. [Bubble Sort](/sortingAlgorithms/bubbleSort.md)
  1. [Merge Sort](/sortingAlgorithms/bubbleSort.md)
  1. [Quick Sort](/sortingAlgorithms/quickSort.md)
- 1. Radix/bucket Sort
+ 1. [Radix/bucket Sort](/sortingAlgorithms/buckerSort.md)
 
  ### Big O notation 
 
