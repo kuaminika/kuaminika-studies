@@ -14,9 +14,9 @@ This contains a few notes about programming. That I find useful. Hopefully it he
  ### Sequential search - coming soon 
  ### Breatch seacrch - coming soon 
  ### Sorting Algorithims 
- 1. [Bubble Sort](/bubbleSort.md)
- 1. Merge Sort
- 1. Quick Sort
+ 1. [Bubble Sort](/sortingAlgorithms/bubbleSort.md)
+ 1. [Merge Sort](/sortingAlgorithms/bubbleSort.md)
+ 1. [Quick Sort](/sortingAlgorithms/quickSort.md)
  1. Radix/bucket Sort
 
  ### Big O notation 
