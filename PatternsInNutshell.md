@@ -13,7 +13,7 @@ There are 3 series of patterns. They are as follows:
    6. Singleton
 
   ## Patterns are known to be structural are
-  1. Adapter
+   1. Adapter
    2. Bridge
    3. Composite
    4. Decorator
