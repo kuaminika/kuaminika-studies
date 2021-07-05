@@ -9,6 +9,7 @@
 | git branch -r | show all branches inside repository ( remote only)|
 | git branch -r | show all branches inside repository ( local only)|
 | git switch that-other-local-branch| switch to another local branch|
+|git switch -c non-existing-branch | create a branch from current Branch|
 | git branch -d localBranchName | delete a branch|
 
 ## Bibliography 
