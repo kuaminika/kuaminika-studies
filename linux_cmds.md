@@ -8,7 +8,7 @@
  ```
 - vim command i used when I wanna save a file that does not exist
 ```
-   :w !sudo tee % > /dev/null
+   :w !sudo tee %
 ```
 - scp to a url using a port other than 22 ( which is the  default one )
 ```bash
