@@ -19,3 +19,7 @@
     - ```bash
        scp -P [port_number] gwomesye.html [username]@[hostname]:/.../gwomesye.html
       ```
+- using the cp command to copy files to the current folder
+  ```
+  cp -r [wtv_path_you_want] .
+  ```
