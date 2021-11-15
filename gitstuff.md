@@ -11,6 +11,7 @@
 | git switch that-other-local-branch| switch to another local branch|
 |git switch -c non-existing-branch | create a branch from current Branch|
 | git branch -d localBranchName | delete a branch|
+| git reset -- pathOfFileToUnstage| to unstage a file|
 
 ## procedures 
 
@@ -36,3 +37,4 @@
 | Switching branches|https://devconnected.com/how-to-switch-branch-on-git/|
 | delete a branch | [The link is long .. just click here](https://www.freecodecamp.org/news/how-to-delete-a-git-branch-both-locally-and-remotely/#:~:text=Deleting%20a%20branch%20LOCALLY&text=Delete%20a%20branch%20with%20git%20branch%20%2Dd%20.&text=The%20%2Dd%20option%20will%20delete,branch%20is%20now%20deleted%20locally.)|
 | adding already tracked to .gitignore | https://stackoverflow.com/questions/1139762/ignore-files-that-have-already-been-committed-to-a-git-repository|
+|To unstage a file |https://devconnected.com/how-to-unstage-files-on-git/|
