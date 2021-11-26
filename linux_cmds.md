@@ -23,3 +23,11 @@
   ```
   cp -r [wtv_path_you_want] .
   ```
+- saving a whole path to a variable instead of copying and pasting it
+   ```bash
+    VARIABLE_NAME="path"
+   ```
+   note that variable can be used as follows:
+    ```bash
+   cd $VARIABLE_NAME
+   ```
