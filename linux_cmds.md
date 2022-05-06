@@ -4,7 +4,7 @@
  - chmod:  I use this command when working on my workspace. 
  
  ```
- chmod -R 755 filename
+ chmod -R 755 directoryName
  ```
  ## vim
 - vim command i used when I wanna save a file that does not exist
