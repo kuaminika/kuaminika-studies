@@ -6,10 +6,12 @@
  ```
  chmod -R 755 filename
  ```
+ ## vim
 - vim command i used when I wanna save a file that does not exist
 ```
    :w !sudo tee %
 ```
+## scp
 - scp to a url using a port other than 22 ( which is the  default one )
 ```bash
  scp -P [port_number] [file_name] [username]@[hostname]:[file destination path]
@@ -19,10 +21,22 @@
     - ```bash
        scp -P [port_number] gwomesye.html [username]@[hostname]:/.../gwomesye.html
       ```
+ ## copying files
 - using the cp command to copy files to the current folder
   ```
   cp -r [wtv_path_you_want] .
   ```
+## zip 
+  ### zipping directories 
+  ```bash
+  zip -r archivename.zip directory_name
+  ```
+  ### zipping serveral files
+  ```bash
+  zip archivename.zip filename1 filename2 filename3
+  ```
+  
+## variables
 - saving a whole path to a variable instead of copying and pasting it
    ```bash
     VARIABLE_NAME="path"
