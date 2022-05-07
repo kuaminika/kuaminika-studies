@@ -6,6 +6,11 @@
  ```
  chmod -R 755 directoryName
  ```
+- chown : this command is used to give file-access to a user 
+  - ```bash
+    chown [username] [folder_name] # note there are more variations. the credits have details
+    ``` 
+  - _credit:https://linuxize.com/post/linux-chown-command/_
  ## vim
 - vim command i used when I wanna save a file that does not exist
 ```
@@ -23,7 +28,7 @@ This is how you sign on to another server using ssh commands
 ```bash
  scp -P [port_number] [file_name] [username]@[hostname]:[file destination path]
 ```
-  - note, tje file destination path must contain the name of the file you want to save it as. 
+  - note, the file destination path must contain the name of the file you want to save it as. 
     - ex: if you might wanna upload gwomesye.html then , you'd do :
     - ```bash
        scp -P [port_number] gwomesye.html [username]@[hostname]:/.../gwomesye.html
