@@ -11,6 +11,13 @@
 ```
    :w !sudo tee %
 ```
+
+## ssh
+This is how you sign on to another server using ssh commands
+```bash
+ ssh user@ip.or.hostname -p 22 # 22 is the port number
+```
+
 ## scp
 - scp to a url using a port other than 22 ( which is the  default one )
 ```bash
