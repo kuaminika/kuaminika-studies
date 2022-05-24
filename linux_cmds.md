@@ -47,7 +47,15 @@ This is how you sign on to another server using ssh commands
   ```bash
   zip archivename.zip filename1 filename2 filename3
   ```
-  
+## Services
+  ### to list services
+  ```bash 
+  systemctl list-units --all --type=service --no-pager
+  #there is also
+  service --status-all
+  ```
+source: https://vitux.com/how-to-start-stop-or-restart-services-in-ubuntu/
+
 ## variables
 - saving a whole path to a variable instead of copying and pasting it
    ```bash
