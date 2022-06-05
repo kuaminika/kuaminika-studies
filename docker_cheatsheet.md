@@ -19,3 +19,10 @@ Usually its the _docker run_ command but there's also the _docker create_ comman
    docker run -p 127.0.0.1:80:8080/tcp ubuntu bash # <-- this will run the ubuntu image and I assume that bash is the first command
    # note. in this case the port 8080 inside the container is being exposed at port 80
   ```
+
+
+### **How to create an image from Dockerfile**
+
+```bash
+   docker build [path/of/Dockerfile/Directory]
+```
