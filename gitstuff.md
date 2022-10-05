@@ -14,7 +14,7 @@
 
 ## procedures 
 
-### When you need to add something inside .gitignore
+### When you need to add something that you forgot inside .gitignore 
 **pre-requisite:** I hope that you updated something inside your gitignore. 
 
 1. commit any outstanding code changes
