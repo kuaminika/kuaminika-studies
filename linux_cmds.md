@@ -38,6 +38,15 @@ This is how you sign on to another server using ssh commands
   ```
   cp -r [wtv_path_you_want] .
   ```
+## Moving everything to parent folder
+- first you cd to the dir
+```
+cd to/parent/child
+```
+- then  you use the mv command
+```
+mv *  ../
+```
 ## zip 
   ### zipping directories 
   ```bash
@@ -65,3 +74,11 @@ source: https://vitux.com/how-to-start-stop-or-restart-services-in-ubuntu/
     ```bash
    cd $VARIABLE_NAME
    ```
+
+
+## adding a new user
+
+- do the following command 
+```bash
+sudo adduser userNameHere
+```
