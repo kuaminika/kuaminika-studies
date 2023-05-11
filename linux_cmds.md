@@ -33,6 +33,13 @@ This is how you sign on to another server using ssh commands
     - ```bash
        scp -P [port_number] gwomesye.html [username]@[hostname]:/.../gwomesye.html
       ```
+ ## Moving all to parent folder
+  step 1: cd to the dir </br>
+  step 2: 
+  ```
+   mv * ../
+  ```
+ 
  ## copying files
 - using the cp command to copy files to the current folder
   ```
