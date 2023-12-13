@@ -3,7 +3,7 @@ This contains a few notes about programming. That I find useful. Hopefully it he
 
 ## Topics
  ## OOP
- ### [Patterns in a nutshell](/PatternsInNutshell.md) 
+  [Patterns in a nutshell](/PatternsInNutshell.md) 
  
  ## Data structures
  ### BSTs - coming soon 
