@@ -45,3 +45,9 @@ jobs:
           # The path of the target file "README.md".
           source: css.md # optional, default is README.md
           
+
+      - name: gitbook-publish
+        # You may pin to the exact commit or the version.
+        # uses: bob1113/gitbook-publish@9422dc9ab41a5bab350590ebb14c0ebfc1896779
+        uses: bob1113/gitbook-publish@v1.0.0
+          
