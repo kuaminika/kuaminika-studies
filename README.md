@@ -1,4 +1,4 @@
-# studious-octo-dollop
+# Welcome
 This contains a few notes about programming. That I find useful. Hopefully it helps  others. 
 
 ## Topics
