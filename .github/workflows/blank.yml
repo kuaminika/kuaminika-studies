@@ -41,7 +41,7 @@ jobs:
         uses: jaywcjlove/markdown-to-html-cli@v4.0.0
         with:
           # Output static pages to the specified directory.
-          output: css.html # optional, default is index.html
+          output: _tmp/css.html # optional, default is index.html
           # The path of the target file "README.md".
           source: css.md # optional, default is README.md
           
