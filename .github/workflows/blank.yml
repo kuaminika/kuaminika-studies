@@ -34,7 +34,7 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-            - name: Converts markdown text to HTML
+      
       - name: htmling it
         # You may pin to the exact commit or the version.
         # uses: jaywcjlove/markdown-to-html-cli@5dda682e43234ae375a1337303e1273fcbb05163
