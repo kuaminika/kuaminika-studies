@@ -3,4 +3,4 @@
 ## DOM stuff
 
 ### Nodelist
-  - it is not an array so it does not have map
+  - It is not an array so it does not have map however it has a forEach(). 
