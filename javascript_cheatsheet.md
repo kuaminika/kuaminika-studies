@@ -1,5 +1,7 @@
 # Javascript cheat sheet
 
+**Note**: there's react cheatsheet as well. [right here](/reactJS_cheatsheet.md)
+
 ## DOM stuff
 
 ### Nodelist
