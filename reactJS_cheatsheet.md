@@ -1,6 +1,14 @@
 # React cheat sheet
 
+## Developer tools
+
+### Devtools
+
 Note: you'll need a chrome extension to access devtools when doing using react : [here](https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
+
+### Vite
+
+It has some build tool that combines css and js to create a bundle css file and a buncle css file: [here](https://vitejs.dev/)
 
 ## Parent & child components
 
@@ -115,23 +123,136 @@ Note: you'll need a chrome extension to access devtools when doing using react :
 **Use case 2:** when using setInterval or  resizeWindow call backs
 **Use case 3:** when using dependency array for executions
 
-## Router
+## Routing
 
-coming soon
+**Note**: it is preferred to do routing in client instead of fetching all HTML from server because network lag is greater than DOM manipulation
 
-## useContext hook ( ie Context API )
+### Link component
+
+- It is a built in react component used to simulate anchor tag.
+- we would prefer to use this instead of anchor tag because anchor tag will load a page and load time is greater than DOM manipulation
+
+### Routes Compoenent
+
+It is a built in react component used as follows:
+
+```jsx
+    <Routes>
+        <Route path="/somePath" element={<SomeComponent />} />
+    </Routes>
+```
+
+Note:
+
+- The **element** property is in JSX  because Routes is analogous to a switch statement. If you're not passing it in JSX, then it's as if you're passing a render function instead of a component.
+- The **path** property is a string which is known as the **Template route**. It can be used to pass variables that will consumed by the  **element** component.
+  - example:
+
+    ```jsx
+        <Routes>
+            <Route path="/somePath/:id" element={<SomeComponent />} />
+        </Routes>
+        // this means that SomeComponent will be able to use the id variable 
+    ```
+
+### Implementing nested routes
+
+1. **Template route** should have '*'
+2. The nested routes woudld be defined inside of  **element** compoenent
+
+example:
+
+```jsx
+    <Routes>
+        <Route path="/somePath/*" element={<SomeComponent />} />
+    </Routes>
+
+    function SomeComponent(props)
+    {        
+        return (<>
+            <Routes>
+                <Route path="/somePath/lookedDeeper" element={<SomeDeepComponent />} />
+            </Routes>
+        <div>I am some component</div></>)
+    }
+
+```
+
+## Hooks -  useParams
+
+Its used to get attribute values inside a **template route**.
+
+## Hooks -  useContext hook ( ie Context API )
+
+### Anantomy of useContext
+
+The anatomy is as follows:
+
+```js
+const contextStateObj = useContext(ContextWrapper);
+```
+
+The **ContextWrapper** is an object that will contain a **Provider**. That provider is the component that is the actual context. the wrapper just wraps it.
+
+- it is created using the React.createContext function.
+
+The **contextStateObj** is the state object that has been provided by the root object.
+
+It would usually go like this:
+
+```jsx
+const ContextWrapper = React.createContext();
+
+// note the contextStateObj must be used through a custom hook
+const useSomeCustomHookToGetContextObj = function(){
+    const contextStateObj = useContext(ContextWrapper);
+    return contextStateObj;
+}
+
+function SomeRootComponent(prop)
+{
+    const [mainUser,setMainUser] = useState({name:"Main Guy",age:"ancient"});
+    return (
+        <>
+            <ContextWrapper.Provider value ={mainUser,setMainUser}>
+                <SomeChildComponent />
+            </ContextWrapper.Provider>
+        </>
+    )
+}
+function SomeChildComponent()
+{
+    const contextStateObj = useSomeCustomHookToGetContextObj();
+
+    function makeYoung()
+    {
+        const user = {...contextStateObj.mainUser};
+        user.age = "young";
+        contextStateObj.setMainUser(user);
+    }
+
+    return (
+        <div>
+            <button onClick={makeYoung}>make young</button>
+            {JSON.stringify(contextStateObj.mainUser)}
+        </div>
+    )
+}
+
+
+```
 
 ### Major use case of context API
 
-- To reduce pop drilling.
-  - Note: pop drilling is when you are lifting the state up to communicate with other components. However not all children state need to consume the state
+- To reduce **pop drilling**.
+  - Note: **pop drilling** is when you are lifting the state up to communicate with other components. However not all children state need to consume the state
 - When the state is a global object, like the theme, auth, or cart
 
 ### Cons of context API
 
 - If the state inside of context is updated, then all the sub components will be updated as well, and it hurts perfomance.
 
-## useReducer hook
+## Hooks -  useReducer hook
 
 ### Anantomy of useReducer
 
