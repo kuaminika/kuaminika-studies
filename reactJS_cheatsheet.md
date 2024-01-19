@@ -1,6 +1,6 @@
 # React cheat sheet
 
-## Developer tools
+## Developer tools and insigths
 
 ### Devtools
 
@@ -9,6 +9,19 @@ Note: you'll need a chrome extension to access devtools when doing using react :
 ### Vite
 
 It has some build tool that combines css and js to create a bundle css file and a buncle css file: [here](https://vitejs.dev/)
+
+### Ideal folder structure
+
+```js
+/*
+    src
+        Pages
+        Components
+        Hooks
+*/
+```
+
+**Hooks** folder should only contain pure js files that will be consumed by JSX compoentns inside the **Pages** and **Components** folders  
 
 ## Parent & child components
 
