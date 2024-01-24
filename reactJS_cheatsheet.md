@@ -283,7 +283,7 @@ function SomeChildComponent()
 - The anatomy of the reducerFn (ie reducer function) is as follows:
 
   ```js
-   const reducerFn = function(chosenAction){
+   const reducerFn = function(stateThatWillChange,chosenAction){
 
         const actionMenu = {
             "doThis" : ()=>{console.log("doing this")},
