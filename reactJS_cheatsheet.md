@@ -293,7 +293,10 @@ function SomeChildComponent()
 
         const runChosenAction = actionMenu[chosenAction];
         runChosenAction();
-      
+
+      /*
+        note, the action could be an object as well.. basically it could be the new state. basically, you use the action as you see fit. 
+      */
    } 
   ```
 
