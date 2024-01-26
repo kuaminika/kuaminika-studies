@@ -283,6 +283,7 @@ function SomeChildComponent()
 - The anatomy of the reducerFn (ie reducer function) is as follows:
 
   ```js
+  // note this is kinda like a bad example because its supposed to return a new state. in this case its returning undefined
    const reducerFn = function(stateThatWillChange,chosenAction){
 
         const actionMenu = {
@@ -292,6 +293,7 @@ function SomeChildComponent()
 
         const runChosenAction = actionMenu[chosenAction];
         runChosenAction();
+      
    } 
   ```
 
