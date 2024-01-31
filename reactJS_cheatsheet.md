@@ -23,6 +23,58 @@ It has some build tool that combines css and js to create a bundle css file and 
 
 **Hooks** folder should only contain pure js files that will be consumed by JSX compoentns inside the **Pages** and **Components** folders  
 
+## Major steps at react component rendering
+
+### 1. JSX is transfered in JS code
+
+- **INPUT:** JSX code
+- **OUTPUT:** at the end of this step,  you should have a js class containing all the attributes of the react component to genrate a **VDOM**
+
+### 2. VDOM is generated
+
+- **INPUT**: class to create VDOM instance
+- **OUTPUT**: VDOM
+  - the VDOM is pretty much a memory representation of the DOM.
+  - It is represented as a JSON object.
+
+### 3. Component is mounted
+
+In this step, values get initiated
+
+### 4. Rendering
+
+It is in this step that you create a DOM object based on your VDOM
+
+- **INPUT**: VDOM object
+- **OUTPUT**: DOM
+
+### 5. UI update
+
+it's when the DOM is actually added to the UI
+
+### 6. event handling
+
+It's when events are added.
+
+## Major steps at react component update
+
+1. state is changed
+1. the VDOM is updated
+1. The diffing algorithm compares old dom with the new
+    - this done to identify changes needed to be executed
+1. Batching occurs to update the UI in batches.
+
+## The good thing about UI
+
+- it helps resolve the issue which is that UI updates are costly.
+
+## Testing tools
+
+- JEST which is used for running any JS tests.
+- React testing library is used for testing react components and accessing the VDOM.
+
+Note: its good practice to write test cases for critical components.
+
 ## Parent & child components
 
 ### Controlled vs Uncontrolled components
