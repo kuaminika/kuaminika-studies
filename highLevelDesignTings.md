@@ -7,6 +7,12 @@
 - low  ttl implies high misses
 - high TTL implies low consisetency ( meaning high chance data might get stale)
 
+### SQL vs NoSQL
+
+- NoSQL is better for sharding
+- NoSQL is good for write heavy systems
+- SQL is better for read heavy systems
+
 ### Problems with S3 storage
 
 - it takes a while to download/updload files. This is indeed why there's a cache.
@@ -79,3 +85,51 @@
   - The master updates all slaves.
   - The master responds to client.
 - Note: this involves **low latency**
+
+
+## Messaging app case study
+
+### The MVP 
+
+#### Functional requirements
+
+- Send a message to recipient
+- See the message history
+- See the recent conversations
+- Real time chat
+
+#### Estimations
+
+- There are 20 billions of messages/day
+- Size o the message can be around 200 bytes when you consider:
+  - from : int ( 8 bytes)
+  - to   : int ( 8 bytes)
+  - content : text
+  - timestamp : 4 bytes
+  - attachements
+  - subject  
+- In the end. the storage needed could be:
+  - 20 billion/day *  200 bytes  which would be 4 TB/day
+  - Clearly, sharding will be needed
+
+#### PACELC  goals
+
+- We want high consistency and low latency.
+- This is clearly a violation of the PACELC theorem.
+
+#### Double send phenomenon
+
+- it happens when a client woudl send a message twice due to lack of ACKs
+
+#### API
+
+- sendMessage(from,to, text)
+- getMessages(conversationId,userId)
+- getConsersations(userId)
+
+#### Sharding
+
+- It can be done by user_id or conversation_id
+  - you would favor  conversation id if dealing with group chats
+  - you would favor user id if dealing with 1-1 chats
+
