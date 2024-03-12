@@ -47,7 +47,7 @@
 
 ### Explanation of the PACELC theorem
 
-- Basically its stating that when we have a partition tolerant system, we can only have AP or CP. Otherwise ( that's where the else comes in), we remove the partitioning tolerance and focus on Consistency and Latency. 
+- Basically its stating that when we have a partition tolerant system, we can only have AP or CP. Otherwise ( that's where the else comes in), we remove the partitioning tolerance and focus on Consistency and Latency.
   - We can have a few scenarios
     - High consistency  and Low latency
     - High Latency and low consistency
@@ -66,7 +66,7 @@
   - The master writes.
   - The master responds to client.
   - The master eventually updates slaves after returning to client
-- Note: this involves **low consistency** 
+- Note: this involves **low consistency**
 
 ## Low latency + (perhaps medium ) consistency scenario
 
@@ -86,10 +86,9 @@
   - The master responds to client.
 - Note: this involves **low latency**
 
-
 ## Messaging app case study
 
-### The MVP 
+### The MVP
 
 #### Functional requirements
 
@@ -133,3 +132,33 @@
   - you would favor  conversation id if dealing with group chats
   - you would favor user id if dealing with 1-1 chats
 
+## HDFS
+
+- **HDFS** is used to save a file on multiple machines.
+- Basically there are chunks. Each chunk could be the size of 128 Mb (or any size based on performance)
+- CAPELC
+  - Consistency over availability. ( this is  a file that we're talking about)
+  - Note: there are different replicas.
+- Disaster recovery is implemented using the rack-aware algorithm.
+  - Note: each rack has multiple machine, and we store chunks in different nodes.
+
+## Streaming
+
+- The file can be downloaded in chunks
+- Steps at writing
+  1. client streams file to app server
+  1. app server gets chunk size from NNS (ie name node server)
+  1. check if buffer is full
+  1. store data in NNS
+  1. store data in data node
+
+- Steps at reading
+  1. app server receives request
+  1. app server talks to NNS
+  1. Appsserver asks data node for data
+  1. App server sends chunks to client.  
+
+## Nearest neighbor
+
+- you implement quarding algorithm to divide your map into different grids. You do it based on the desired amount of points that you'd like to have inside of your grid.
+- the grids are used to optimize the list of nearest neighbours when you are given a point.
