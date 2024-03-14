@@ -162,3 +162,19 @@
 
 - you implement quarding algorithm to divide your map into different grids. You do it based on the desired amount of points that you'd like to have inside of your grid.
 - the grids are used to optimize the list of nearest neighbours when you are given a point.
+
+## Uber case study
+
+- You want to shard by city_id
+- To keep track of movement, a continuous ping is done
+
+### read usecase- when user wants a ride
+
+- you have to start by finding the grid that you're in. 
+  - this will allow you to then fetch all the drivers inside of this grid. 
+  - Edge case, its possible that the grid has no drivers or not enough, you'd then look at the neighbouring grids
+
+### write use case - when driver is moving
+
+- theoretically, we would want to save the driver movement information inside of the quard tree. However this is expensive
+  - this is why we'd use a cache, and you would only update the quard tree **if** it's inside another grid.
