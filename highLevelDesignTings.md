@@ -131,6 +131,7 @@
 - It can be done by user_id or conversation_id
   - you would favor  conversation id if dealing with group chats
   - you would favor user id if dealing with 1-1 chats
+- Note: sometimes sharding is better to limit throughput instead of space management 
 
 ## HDFS
 
@@ -179,6 +180,18 @@
 - theoretically, we would want to save the driver movement information inside of the quard tree. However this is expensive
   - this is why we'd use a cache, and you would only update the quard tree **if** it's inside another grid.
 
+## Microservices
+
+### Application gateway
+
+- It's used for:
+  - Service routing
+  - Rate limiting
+    - Protection from DoS attacks
+    - limiting usages
+    - whenever a request comes in, you'd then put it in a queue
+      - you would use the sliding window protocol to process requests.
+
 ## Microservices patterns
 
 They are patterns used to deal with creating atomic transactions within different services
@@ -214,9 +227,8 @@ They are patterns used to deal with creating atomic transactions within differen
 - Its the practice of having two different components. 1 for reading queries. 1 for writign queries.
 - The reading of queries will probably read from a database replica that will be strictly be used for reading.
 
-
 ## Circuit breaking
 
 - Circuit breaking is when you have to break the circuit of a message queue because a service is down.
 - The circuit would have a status of closed when the service is running. The status of open when the service is down. When the service is back up, the status should be half open to avoid **thunder heards**
-   - A thunder heard is when your service is bombarded by messages to process because it was down.
+  - A thunder heard is when your service is bombarded by messages to process because it was down.
