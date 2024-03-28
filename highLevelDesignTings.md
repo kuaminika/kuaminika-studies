@@ -170,11 +170,53 @@
 
 ### read usecase- when user wants a ride
 
-- you have to start by finding the grid that you're in. 
-  - this will allow you to then fetch all the drivers inside of this grid. 
+- you have to start by finding the grid that you're in.
+  - this will allow you to then fetch all the drivers inside of this grid.
   - Edge case, its possible that the grid has no drivers or not enough, you'd then look at the neighbouring grids
 
 ### write use case - when driver is moving
 
 - theoretically, we would want to save the driver movement information inside of the quard tree. However this is expensive
   - this is why we'd use a cache, and you would only update the quard tree **if** it's inside another grid.
+
+## Microservices patterns
+
+They are patterns used to deal with creating atomic transactions within different services
+
+### Two phase commit
+
+- 3 steps
+  - step 1: all microservices involved in the transaction are getting ready and therefore locking resources that needs to be shared
+    - note the resources that would be locked are tables or rows in databases
+  - step 2: execution in all services
+  - step 3: releasing the lock
+
+- The down side of this is that it has latency and locking resources as it locks resources. It can be a risk for starvation.  
+  - this is why this is considered as an anti-pattern
+
+### SAGA pattern
+
+- This is the pattern that is supposed to be implemented to avoid latency risks like the two phase commit. The goal is to make sure that every microservice locks resources ONLY when performin their own transactions. 
+  - it can be implemented in two ways, Orchestration or Choreography
+
+#### orchestrator SAGA pattern
+
+- This is very similar to Two phase commit. One service is responsible for orchestrating the individual transactions
+
+#### choreaography SAGA pattern
+
+- There is no service orchestrating transactions. A message queue is used like Kafka.
+- This is the preferred pattern as it helps decoupling and it is easier to scale
+- The bad side is that there can be latency because of messages in the queue.
+
+## CQRS aka (Command Query Responsability Segregation)
+
+- Its the practice of having two different components. 1 for reading queries. 1 for writign queries.
+- The reading of queries will probably read from a database replica that will be strictly be used for reading.
+
+
+## Circuit breaking
+
+- Circuit breaking is when you have to break the circuit of a message queue because a service is down.
+- The circuit would have a status of closed when the service is running. The status of open when the service is down. When the service is back up, the status should be half open to avoid **thunder heards**
+   - A thunder heard is when your service is bombarded by messages to process because it was down.
