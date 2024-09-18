@@ -25,6 +25,54 @@ The following contains Key notes about Node JS
 
 Instructions can be found here: [https://nodejs.org/en](https://nodejs.org/en)
 
+## Event loop and concurrency
+
+More is discussed in [here](/javascript_cheatsheet.md#event-loop-and-concurrency)
+
+### SetImmediate and NextTick
+
+The setImmediate() and nextTick() functions in Node.js are both used to schedule callbacks to be executed after the current operation completes.
+
+- _nextTikck_ runs at the beginning of the next tick of the loop.
+- setImmediate runs at the end of the event loop.
+
+- In the code below
+
+  ```js
+   const {  setImmediate } = require('timers/promises');
+ 
+    const {nextTick} = process;
+
+      console.log('Start');
+
+      setImmediate(() => {
+        console.log('setImmediate');
+      });
+
+      nextTick(() => {
+        console.log('nextTick');
+      });
+      nextTick(() => {
+        console.log('nextTick2');
+      });
+
+
+      setTimeout(() => {
+        console.log('setTimeout');
+      }, 0);
+
+      console.log('End');
+
+  ```
+
+  - The output would be:
+  
+     Start
+     End
+     nextTick
+     setTimeout
+     setImmediate
+
 ## Important Node modules
 
 ||Module| utility|
