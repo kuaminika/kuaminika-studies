@@ -1,4 +1,4 @@
-# Hotstar design case study
+# Video app design case study
 
 ## Functional requirements (MVP)
 
