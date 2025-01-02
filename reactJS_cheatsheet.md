@@ -21,6 +21,16 @@ It has some build tool that combines css and js to create a bundle css file and 
 */
 ```
 
+## What is a react component?
+
+A **React component** is a reusable piece of UI that encapsulates its own logic and rendering.
+
+- There are two types of react components:
+  - Function component:
+    - it uses hooks inisde a function such as _useState_ and _useEffect_ to handle UI logic.
+  - Class component:
+    - uses methods like componentDidMount(), compoenentDidUpdate() to handle UI logic.
+
 **Hooks** folder should only contain pure js files that will be consumed by JSX compoentns inside the **Pages** and **Components** folders  
 
 ## Major steps at react component rendering

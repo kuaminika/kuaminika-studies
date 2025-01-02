@@ -28,3 +28,10 @@ First of all, it is important to note that Node JS, or JS for that matter is NOT
   - It allows for the js engine to execute other tasks  while waiting for asynchronous operations.
 - The _Javascript engine_ executes js line by line.
 - The  _call stack_ stores function calls
+- In browser JS, there are 3 synchronous queues
+  1. Macro Task queue
+  1. micro task queue
+  1. animation queue 
+
+
+## call back hell

@@ -1,0 +1,120 @@
+# High level design (HLD)
+
+## What is HLD
+
+- In a nutshell, it's basically about the overall architecture of a software. It devles into major components and how they'd interact with each other at high level to ensure application efficiency.
+
+***
+
+## Load balancer
+
+- It's a component that distributes network traffic ( such as client requests) in horizontal mapping scenraio to ensure the application is available and performant.
+
+## Sharding
+
+- It's when you're splitting data between different machines to reduce the risk of overloading it with data. The process is done based on a key attribute known as the **sharding key**.
+
+- When you're sharding. It's important to note that data is divided into shards. These shards reside on the machines. A machine can have more than one shard.
+
+### The sharding key
+
+- It's the attribute of an object that should not be spread out within different shards. <-- perhaps this is statement needs to be reviewed>
+
+### When sharding, you want to:
+
+- Make sure that data is distributed throughout all shards evenly when distributing. 
+
+#### Methods of distribution
+
+- **Simple hashing** is great if you're dealing small applications wich will not grow. It's downside is that you'd have to rehash and redistribute everything when adding a machine, and it can cost downtime.
+- **Range distribution**   can lead to uneven skewed and loads. 
+- The most ideal method of distribution is **consistent hashing**. This is because adding/removing machines does not require global rehashing and redistributing.
+
+***
+
+## Caching
+
+### Intro
+
+It's not ideal to have the application and the database on the same server. This is because both components are at risk of having to fight for resources.
+
+Separating the database and the application can lead to latency when fetching data. Hence the need for **Caching**.
+
+In a nutshell, caching is when you store data closer to you or in a faster storage system for faster retireval.
+
+### Types of caching
+
+#### Browser caching
+
+Browser caching can be summed up as saving data such as DNS entries, JS files etc.
+
+##### CDNs
+
+When content that the browser is looking for is not inside it's cache. It will fetch the information through the web.  **CDNs**(i.e  Content delivery network) are usually located in the same locations as ISPs. This reduces latency to fetch information that is not found in the browser's cache.
+
+#### Local caching
+
+Local caching is usually when an application is caching data within the same server.
+
+#### Global caching
+
+Global caching is usually when an application is caching data within a centralized place tha can be used by other applications
+
+### Downsides of caching
+
+- data gets stale
+- the cachge gets full
+
+### Solutions to the downside: data getting stale
+
+#### TTL ( Time To Live)
+
+- It usually works  well with apps that dont mind if the data is not needed in the cache very long.
+
+#### Implementing various write strategies
+
+##### Write through
+
+- Scenario is as follows:
+   1. data is inserted inside the cache
+   1. data is inserted inside the DB
+   1. message sent to user about succesful save when both writes are succesful
+- This scenario is good for read heavy applications
+
+##### Write back
+
+- Scenario is as follows:
+   1. data is inserted inside the cache
+   1. message sent to user about succesful save
+   1. data is inserted inside the DB
+- This scenario works well with systems that do not care much about data loss.
+
+##### Write around
+
+- Scenario is as follows:
+   1. data is inserted inside the DB
+   1. message sent to user about succesful save
+   1. data is inserted inside the cache eventually upon request
+
+- This scenario works well with TTL applications.
+
+### Solutions to the downside: cache getting full
+
+#### There are 4 major eviction strategies
+
+1. LIFO (last in first out)
+2. FIFO ( first in first out)
+3. LRU  (least recently used)
+4. MRU  ( most recently used)
+
+### Global caching in detail
+
+#### Downsides of distributed local caching
+
+![Distributed global caching](diagramScripts/distributedLocalCache.png)
+
+As shown above, distributed local caching is when every server has its own local cache.
+
+This design makes local the cache increases the risk for:
+- cache miss: meaning when fetching data in the cache and it's not there
+- stale data: meaning getting data that is 
