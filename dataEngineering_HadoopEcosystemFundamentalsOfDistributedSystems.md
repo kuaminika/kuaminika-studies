@@ -44,11 +44,13 @@ Hadoop is a tool designed to address the challenges of distributed systems.
 ### Core Components of Hadoop
 
 Most systems rely on these major components:
+
 - **RAM**
 - **CPU**
 - **Hard Disk**
 
 Hadoop’s major components include:
+
 - **HDFS**: Acts as the hard disk for distributed storage.
 - **YARN**: Handles resource management.
 - **Spark**: Used for MapReduce operations.
