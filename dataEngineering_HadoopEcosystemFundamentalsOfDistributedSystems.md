@@ -2,7 +2,7 @@
 
 ## Challenges of Traditional Systems
 
-- **Data Sizes**: Dealing with large volumes of data (e.g., handling heavy data content).
+- **Data Sizes**: Handling large volumes of data (e.g., managing heavy data content).
 - **Unstructured Data**: Managing non-traditional data formats like videos and images.
 - **Scalability**: Choosing between horizontal and vertical scaling.
   - **Horizontal Scaling** is implemented using **distributed systems**.
@@ -64,3 +64,19 @@ Hadoop’s major components include:
   - Note: The master node does **not** store actual data.
 - If the replication factor is **3**, all three DataNodes will store all blocks of a file.
 - If the number of replicas (DataNodes) exceeds the replication factor, some replicas may not store all blocks.
+  - Deletion of excess block copies will occur.
+- In HDFS 2.0, there's a second master node that is present as _standby_.
+  - **Zookeeper** is responsible for managing multiple masters. It also informs slaves if the master has changed.
+  - **Zookeeper** has the role of electing the leader in case of a failure.
+
+- HDFS implements **Quorum-based storage**.
+- In HDFS, metadata is shared across multiple masters. This is done with a component called **Journal Nodes**.
+  - **Journal Nodes** keep the passive NameNode (aka standby master) in sync with the active NameNode.
+
+- **NameNodes** are the core components of the HDFS cluster.
+  - They store metadata for each file that is created.
+  - Metadata consists of two data structures:
+    - **FSImage** (File System Image):
+      - It is essentially a snapshot of the file system. You can expect to see paths like `/var/...` or `/etc/...`.
+    - **Edit Logs**: Sequential transaction logs that record every metadata change in HDFS.
+  - In summary, NameNodes = File System (FSImage) + Edit Logs.
