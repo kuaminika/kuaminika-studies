@@ -1,0 +1,62 @@
+# YARN Architecture
+
+YARN is responsible for managing CPU/RAM usage for jobs from MapReduce and other workloads in the Hadoop ecosystem.
+
+## Core vs vCore
+
+| **Attribute**       | **CORE**                                  | **VCORE**                          |
+|---------------------|-----------------------------------------|-----------------------------------|
+| **Representation**  | Represents a physical CPU in a cluster  | Represents a logical CPU unit     |
+| **Computation**     | Managed at the OS level                 | Managed at the YARN level         |
+| **Creation**       | Built-in (physical)                     | Created through virtualization    |
+
+- 1 vCore is approximately **0.6 of a core**. This means that **4 cores could yield around 7 vCores**.
+
+---
+
+## Architectural Components
+
+### Resource Manager
+
+The Resource Manager has two subcomponents:
+- **Scheduler**
+- **Application Manager**
+
+#### Scheduler
+
+The scheduler defines how jobs are executed. There are three scheduling options:
+- **FIFO (First In, First Out)**
+- **Capacity Scheduling**
+- **Fair Scheduling**
+
+**Limitations of the Scheduler:**
+- **Does not restart failed tasks.**
+- **Does not monitor or track the state of applications.**
+
+##### FIFO Scheduling
+- Jobs are executed one after another, using all available resources.
+- **Downside:** No parallel execution, leading to inefficient resource usage.
+
+##### Capacity Scheduling
+- Similar to FIFO but **divides resources into smaller sub-pools**, allowing multiple jobs to run in parallel.
+- **Downside:** Some jobs may receive **more or fewer resources than needed**, leading to inefficiencies.
+
+##### Fair Scheduling
+- Similar to capacity scheduling, but resources are allocated **dynamically based on demand** rather than predefined partitions.
+
+---
+
+#### Application Manager
+
+The Application Manager is responsible for:
+- Accepting job **submissions**.
+- **Negotiating resources**.
+- **Restarting failed jobs**.
+
+---
+
+### Node Manager
+
+The Node Manager is responsible for:
+- **Managing container dependencies**.
+- **Monitoring node health**
